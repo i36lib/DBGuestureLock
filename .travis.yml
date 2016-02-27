@@ -1,0 +1,4 @@
+language: objective-c
+xcode_workspace: DBGuestureLock.xcworkspace
+xcode_scheme: Demo
+xcode_sdk: iphonesimulator
