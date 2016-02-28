@@ -1,5 +1,5 @@
-# DBGuestureLock
-[![Build Status](https://travis-ci.org/i36lib/DBGuestureLock.svg)](https://travis-ci.org/i36lib/DBGuestureLock)   [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT)  [阅读中文版](https://github.com/i36lib/DBGuestureLock/blob/master/README.md)
+# DBGuestureLock [阅读中文版](https://github.com/i36lib/DBGuestureLock/blob/master/README.md)
+[![Build Status](https://travis-ci.org/i36lib/DBGuestureLock.svg)](https://travis-ci.org/i36lib/DBGuestureLock)   [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT)
 
 `DBGuestureLock` is an iOS drop-in class which is very easy to use. I am welcome you to make any additional useful features to DBGuestureLock to make it better. If you want to make a contribution to this project, just make a pull request. If you like this project, make a star!
 

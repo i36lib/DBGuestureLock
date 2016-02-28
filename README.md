@@ -1,5 +1,5 @@
-# DBGuestureLock
-[![Build Status](https://travis-ci.org/i36lib/DBGuestureLock.svg)](https://travis-ci.org/i36lib/DBGuestureLock)   [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT)  [Read in English](https://github.com/i36lib/DBGuestureLock/blob/master/READMEEN.md)
+# DBGuestureLock [English](https://github.com/i36lib/DBGuestureLock/blob/master/READMEEN.md)
+[![Build Status](https://travis-ci.org/i36lib/DBGuestureLock.svg)](https://travis-ci.org/i36lib/DBGuestureLock)   [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT)
 
 `DBGuestureLock`是一个简单易用，方便上手，可配置的 iOS 手势密码组件。如果您愿意，非常欢迎您为这个项目增加其他有用的功能，如果您需要为这个项目做一份贡献，只需要提交一个`pull request`到这个项目即可。如果您喜欢这个组件并觉得它不错，欢迎您给它加个星。
 
@@ -17,7 +17,7 @@
 
 直接拷贝`DBGuestureButton.h`, `DBGuestureButton.m`,`DBGuestureLock.h`, `DBGuestureLock.m`四个源文件到项目中即可，请勾选必要时Copy文件选项。
 
-1. 下载最新版本代码[latest code version](https://github.com/i36lib/DBGuestureLock/archive/master.zip)或者直接使用Git克隆这个项目到你本地来获取最新代码。
+1. 下载[最新版本代码](https://github.com/i36lib/DBGuestureLock/archive/master.zip)或者直接使用Git克隆这个项目到你本地来获取最新代码。
 2. 打开你的Xcode, 然后拖拽这四个源文件到你的工程项目中(使用"Product Navigator view")，如果源文件不在你的项目文件夹内，请在拖拽时确保勾选“Copy”选项。
 3. 在你想添加到的视图的ViewController中使用命令`#import "DBGuestureLock.h"`来引入头文件，这样就可以使用了。
 
