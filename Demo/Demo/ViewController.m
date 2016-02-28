@@ -2,7 +2,7 @@
 //  ViewController.m
 //  Demo
 //
-//  Created by Fury on 2/27/16.
+//  Created by Fury on 2/28/16.
 //  Copyright © 2016 http://i36.Me/. All rights reserved.
 //
 
@@ -20,7 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
     [DBGuestureLock clearGuestureLockPassword]; //for test
     
     DBGuestureLock *lock = [DBGuestureLock lockOnView:self.view delegate:self];

@@ -171,7 +171,7 @@
     NSMutableString *password = [[NSMutableString alloc] initWithCapacity:0];
     for (NSInteger i=0; i<[self.selectedButtons count]; i++) {
         DBGuestureButton *button = self.selectedButtons[i];
-        [password appendFormat:@"%li", button.tag];
+        [password appendFormat:@"%li", (long)button.tag];
     }
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
