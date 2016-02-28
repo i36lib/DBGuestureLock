@@ -3,7 +3,7 @@
 
 `DBGuestureLock` is an iOS drop-in class which is very easy to use. I am welcome you to make any additional useful features to DBGuestureLock to make it better. If you want to make a contribution to this project, just make a pull request. If you like this project, make a star!
 
-[![](http://i36.me/images/devref/DBGuestureLock_TEST.png.png)](http://i36.me/images/devref/DBGuestureLock_TEST.png.png)
+[![](http://i36.me/images/devref/DBGuestureLock_TEST.png)](http://i36.me/images/devref/DBGuestureLock_TEST.png)
 
 ## Requirements
 
