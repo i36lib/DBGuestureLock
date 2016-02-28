@@ -1,5 +1,5 @@
 # DBGuestureLock [中文](https://github.com/i36lib/DBGuestureLock/blob/master/READMECN.md)
-[![Build Status](https://travis-ci.org/i36lib/DBGuestureLock.svg)](https://travis-ci.org/i36lib/DBGuestureLock)   [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/i36lib/DBGuestureLock.svg)](https://travis-ci.org/i36lib/DBGuestureLock)  [![Cocoapods compatible](https://img.shields.io/badge/pod-v0.0.1-blue.svg?style=flat)](https://cocoapods.org/pods/DBGuestureLock)  [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT)
 
 `DBGuestureLock` is an iOS drop-in class which is very easy to use. I am welcome you to make any additional useful features to DBGuestureLock to make it better. If you want to make a contribution to this project, just make a pull request. If you like this project, make a star!
 
@@ -12,6 +12,16 @@
 * UIKit.framework
 
 ## Adding DBGuestureLock to your project
+
+### Cocoapods
+
+[CocoaPods](http://cocoapods.org) is the recommended way to add DBGuestureLock to your project.
+
+1. Add a pod entry for DBGuestureLock to your Podfile `pod 'DBGuestureLock', '~> 0.0.1'`
+2. Install the pod(s) by running `pod install`.
+3. Include DBGuestureLock wherever you need it with `#import "DBGuestureLock.h"`.
+
+Open your project with Xcode using `your_project_name.xcworkspace` instead.
 
 ### Source files
 
