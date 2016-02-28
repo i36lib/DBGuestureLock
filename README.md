@@ -1,17 +1,17 @@
 # DBGuestureLock
 [![Build Status](https://travis-ci.org/i36lib/DBGuestureLock.svg)](https://travis-ci.org/i36lib/DBGuestureLock)   [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT)
 
-DBGuestureLock is an iOS drop-in class which is very easy to use. I am welcome you to make any additional useful features to DBGuestureLock to make it better. If you want to make a contribution to this project, just make a pull request. If you like this project, make a star!
+`DBGuestureLock` is an iOS drop-in class which is very easy to use. I am welcome you to make any additional useful features to DBGuestureLock to make it better. If you want to make a contribution to this project, just make a pull request. If you like this project, make a star!
 
-[![](i36.me/images/DBGuestureLock/01.png)](i36.me/images/DBGuestureLock/01.png)
-[![](i36.me/images/DBGuestureLock/02.png)](i36.me/images/DBGuestureLock/02.png)
-[![](i36.me/images/DBGuestureLock/03.png)](i36.me/images/DBGuestureLock/03.png)
-[![](i36.me/images/DBGuestureLock/04.png)](i36.me/images/DBGuestureLock/04.png)
-[![](i36.me/images/DBGuestureLock/05.png)](i36.me/images/DBGuestureLock/05.png)
+[![](http://i36.me/images/DBGuestureLock/01.png)](http://i36.me/images/DBGuestureLock/01.png)
+[![](http://i36.me/images/DBGuestureLock/02.png)](http://i36.me/images/DBGuestureLock/02.png)
+[![](http://i36.me/images/DBGuestureLock/03.png)](http://i36.me/images/DBGuestureLock/03.png)
+[![](http://i36.me/images/DBGuestureLock/04.png)](http://i36.me/images/DBGuestureLock/04.png)
+[![](http://i36.me/images/DBGuestureLock/05.png)](http://i36.me/images/DBGuestureLock/05.png)
 
 ## Requirements
 
-DBGuestureLock is build under iOS SDK9.2 with Xcode7.2.1(7C1002) and pass test on travis-ci with Xcode7 and iOS SDK9.0. You should use DBGuestureLock under ARC.
+`DBGuestureLock` is build under iOS `SDK9.2` with `Xcode7.2.1(7C1002)` and pass test on travis-ci with `Xcode7` and iOS `SDK9.0`. You should use DBGuestureLock under `ARC`.
 
 * UIKit.framework
 
@@ -27,14 +27,14 @@ Just add the `DBGuestureButton.h`, `DBGuestureButton.m`,`DBGuestureLock.h`, `DBG
 
 ## Usage
 
-01. Import the `DBGuestureLock.h` in your ViewController and make your ViewController conforms to `DBGuestureLockDelegate` delegate:
+Import the `DBGuestureLock.h` in your ViewController and make your ViewController conforms to `DBGuestureLockDelegate` delegate:
 ```objective-c
 #import "DBGuestureLock.h"
 
 @interface ViewController ()<DBGuestureLockDelegate>
 ```
 
-02. Create a GuestureLock and add it to your view in `viewDidLoad` method:
+Create a GuestureLock and add it to your view in `viewDidLoad` method:
 ```objective-c
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -47,10 +47,10 @@ Just add the `DBGuestureButton.h`, `DBGuestureButton.m`,`DBGuestureLock.h`, `DBG
 }
 ```
 
-03. Implement the DBGuestureLockDelegate delegate methods:
+Implement the 3 require delegate methods:
 ```objective-c
 -(void)guestureLock:(DBGuestureLock *)lock didSetPassword:(NSString *)password {
-    //NSLog(@"Password set: %@", password);
+    // test
     if (lock.firstTimeSetupPassword == nil) {
         lock.firstTimeSetupPassword = password;
         NSLog(@"varify your password");
@@ -59,7 +59,7 @@ Just add the `DBGuestureButton.h`, `DBGuestureButton.m`,`DBGuestureLock.h`, `DBG
 }
 
 -(void)guestureLock:(DBGuestureLock *)lock didGetCorrectPswd:(NSString *)password {
-    //NSLog(@"Password correct: %@", password);
+    // test
     if (lock.firstTimeSetupPassword && ![lock.firstTimeSetupPassword isEqualToString:DBFirstTimeSetupPassword]) {
         lock.firstTimeSetupPassword = DBFirstTimeSetupPassword;
         NSLog(@"password has been setup!");
@@ -71,7 +71,7 @@ Just add the `DBGuestureButton.h`, `DBGuestureButton.m`,`DBGuestureLock.h`, `DBG
 }
 
 -(void)guestureLock:(DBGuestureLock *)lock didGetIncorrectPswd:(NSString *)password {
-    //NSLog(@"Password incorrect: %@", password);
+    // test
     if (![lock.firstTimeSetupPassword isEqualToString:DBFirstTimeSetupPassword]) {
         NSLog(@"Error: password not equal to first setup!");
         self.label.text = @"Not equal to first setup!";
@@ -82,7 +82,7 @@ Just add the `DBGuestureButton.h`, `DBGuestureButton.m`,`DBGuestureLock.h`, `DBG
 }
 ```
 
-04. Some other optional delegate methods allow you to change the style of the lock:
+Some other optional delegate methods allow you to change the style of the lock:
 ```objective-c
 -(BOOL)showButtonCircleCenterPointOnState:(DBButtonState)buttonState;
 -(BOOL)fillButtonCircleCenterPointOnState:(DBButtonState)buttonState;//NO for stroke, YES for fill
@@ -95,7 +95,7 @@ Just add the `DBGuestureButton.h`, `DBGuestureButton.m`,`DBGuestureLock.h`, `DBG
 -(UIColor *)lineColorOfGuestureOnState:(DBButtonState)buttonState;
 ```
 
-05. Other class methods/property allow you to operate the password:
+Other class methods/property allow you to operate the password:
 ```objective-c
 +(BOOL)passwordSetupStatus;
 +(void)clearGuestureLockPassword;
