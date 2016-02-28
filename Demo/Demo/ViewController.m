@@ -19,8 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    [DBGuestureLock clearGuestureLockPassword]; //for test
+
+    [DBGuestureLock clearGuestureLockPassword]; //just for test
     
     DBGuestureLock *lock = [DBGuestureLock lockOnView:self.view delegate:self];
     [self.view addSubview:lock];
