@@ -101,7 +101,14 @@ Some other optional delegate methods allow you to change the style of the lock:
 -(UIColor *)lineColorOfGuestureOnState:(DBButtonState)buttonState;
 ```
 
-Other class methods/property allow you to operate the password:
+`DBButtonState` include:
+```objective-c
+DBButtonStateNormal     //Normal state button
+DBButtonStateSelected   //when button is selected
+DBButtonStateIncorrect  //when password is incorrect
+```
+
+Other class methods/property allow you to operate with the password (password is saved in UserDefaults):
 ```objective-c
 +(BOOL)passwordSetupStatus;
 +(void)clearGuestureLockPassword;

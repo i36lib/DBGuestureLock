@@ -11,7 +11,7 @@
 
 * UIKit.framework
 
-## 二、在项目中DBGuestureLock
+## 二、在项目中使用DBGuestureLock
 
 ### Cocoapods
 
@@ -99,6 +99,13 @@
 -(UIColor *)colorForFillingButtonCircleOnState:(DBButtonState)buttonState;
 -(UIColor *)colorOfButtonCircleCenterPointOnState:(DBButtonState)buttonState;
 -(UIColor *)lineColorOfGuestureOnState:(DBButtonState)buttonState;
+```
+
+`DBButtonState` 包括三种状态:
+```objective-c
+DBButtonStateNormal     //正常状态下的按钮样式
+DBButtonStateSelected   //当按钮被选中时的样式
+DBButtonStateIncorrect  //当密码输入错误时选中按钮的样式
 ```
 
 另外提供了一些类方法和属性来对密码进行操作，密码是存储在`UserDefaults`当中的：
