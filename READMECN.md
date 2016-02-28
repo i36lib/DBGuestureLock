@@ -5,7 +5,7 @@
 
 [![](http://i36.me/images/devref/DBGuestureLock_TEST.png)](http://i36.me/images/devref/DBGuestureLock_TEST.png)
 
-## 前置条件
+## 一、前置条件
 
 `DBGuestureLock`是在iOS `SDK9.2`和`Xcode7.2.1(7C1002)`下构建的，在[Travis-ci](https://travis-ci.org/)上使用`Xcode7`和iOS `SDK9.0`来测试并通过。 该组件基于`ARC`，需要支持的框架为：
 
@@ -31,7 +31,7 @@
 2. 打开你的Xcode, 然后拖拽这四个源文件到你的工程项目中(使用"Product Navigator view")，如果源文件不在你的项目文件夹内，请在拖拽时确保勾选“Copy”选项。
 3. 在你想添加到的视图的ViewController中使用命令`#import "DBGuestureLock.h"`来引入头文件，这样就可以使用了。
 
-## 使用方法
+## 二、使用方法
 
 在你想添加到的视图的ViewController中导入`DBGuestureLock.h`头文件，然后让这个视图控制器实现`DBGuestureLockDelegate`委托，或者你可以在别的类当中实现该委托，在新建Lock时指定即可：
 ```objective-c
@@ -109,6 +109,6 @@
 @property (nonatomic, readonly, assign)BOOL isPasswordSetup;
 ```
 
-## 代码使用协议
+## 三、代码使用协议
 
 本项目代码遵从`MIT`协议，协议内容参见[MIT license](LICENSE)文件。

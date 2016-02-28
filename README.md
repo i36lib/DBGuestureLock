@@ -5,7 +5,7 @@
 
 [![](http://i36.me/images/devref/DBGuestureLock_TEST.png)](http://i36.me/images/devref/DBGuestureLock_TEST.png)
 
-## Requirements
+## NO.1 Requirements
 
 `DBGuestureLock` is build under iOS `SDK9.2` with `Xcode7.2.1(7C1002)` and pass test on travis-ci with `Xcode7` and iOS `SDK9.0`. You should use DBGuestureLock under `ARC`.
 
@@ -31,7 +31,7 @@ Just add the `DBGuestureButton.h`, `DBGuestureButton.m`,`DBGuestureLock.h`, `DBG
 2. Open your project in Xcode, then drag and drop the 4 source files onto your project (use the "Product Navigator view"). Make sure to select Copy items when asked if you extracted the code archive outside of your project.
 3. Include DBGuestureLock in your ViewController where you want to add the guesture lock with `#import "DBGuestureLock.h"`.
 
-## Usage
+## NO.2 Usage
 
 Import the `DBGuestureLock.h` in your `ViewController` and make your ViewController conforms to `DBGuestureLockDelegate` delegate:
 ```objective-c
@@ -109,6 +109,6 @@ Other class methods/property allow you to operate the password:
 @property (nonatomic, readonly, assign)BOOL isPasswordSetup;
 ```
 
-## License
+## NO.3 License
 
 This code is distributed under the terms and conditions of the [MIT license](LICENSE).
