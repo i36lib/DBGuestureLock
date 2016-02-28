@@ -11,7 +11,7 @@
 
 * UIKit.framework
 
-## Adding DBGuestureLock to your project
+## NO.2 Adding DBGuestureLock to your project
 
 ### Cocoapods
 
@@ -31,7 +31,7 @@ Just add the `DBGuestureButton.h`, `DBGuestureButton.m`,`DBGuestureLock.h`, `DBG
 2. Open your project in Xcode, then drag and drop the 4 source files onto your project (use the "Product Navigator view"). Make sure to select Copy items when asked if you extracted the code archive outside of your project.
 3. Include DBGuestureLock in your ViewController where you want to add the guesture lock with `#import "DBGuestureLock.h"`.
 
-## NO.2 Usage
+## NO.3 Usage
 
 Import the `DBGuestureLock.h` in your `ViewController` and make your ViewController conforms to `DBGuestureLockDelegate` delegate:
 ```objective-c
@@ -109,6 +109,6 @@ Other class methods/property allow you to operate the password:
 @property (nonatomic, readonly, assign)BOOL isPasswordSetup;
 ```
 
-## NO.3 License
+## NO.4 License
 
 This code is distributed under the terms and conditions of the [MIT license](LICENSE).

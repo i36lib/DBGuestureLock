@@ -11,7 +11,7 @@
 
 * UIKit.framework
 
-## 在项目中DBGuestureLock
+## 二、在项目中DBGuestureLock
 
 ### Cocoapods
 
@@ -31,7 +31,7 @@
 2. 打开你的Xcode, 然后拖拽这四个源文件到你的工程项目中(使用"Product Navigator view")，如果源文件不在你的项目文件夹内，请在拖拽时确保勾选“Copy”选项。
 3. 在你想添加到的视图的ViewController中使用命令`#import "DBGuestureLock.h"`来引入头文件，这样就可以使用了。
 
-## 二、使用方法
+## 三、使用方法
 
 在你想添加到的视图的ViewController中导入`DBGuestureLock.h`头文件，然后让这个视图控制器实现`DBGuestureLockDelegate`委托，或者你可以在别的类当中实现该委托，在新建Lock时指定即可：
 ```objective-c
@@ -109,6 +109,6 @@
 @property (nonatomic, readonly, assign)BOOL isPasswordSetup;
 ```
 
-## 三、代码使用协议
+## 四、代码使用协议
 
 本项目代码遵从`MIT`协议，协议内容参见[MIT license](LICENSE)文件。
