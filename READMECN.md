@@ -41,7 +41,7 @@
 ```objective-c
 #import "DBGuestureLock.h"
 
-@interface ViewController ()<DBGuestureLockDelegate>
+@interface ViewController ()
 ```
 
 在`viewDidLoad`方法中创建一个`GuestureLock`对象，然后添加到视图:
