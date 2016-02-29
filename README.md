@@ -17,7 +17,7 @@
 
 [CocoaPods](http://cocoapods.org) is the recommended way to add DBGuestureLock to your project.
 
-1. Add a pod entry for DBGuestureLock to your Podfile `pod 'DBGuestureLock', '~> 0.0.1'`
+1. Add a pod entry for DBGuestureLock to your Podfile `pod 'DBGuestureLock', '~> 0.0.2'`
 2. Install the pod(s) by running `pod install`.
 3. Include DBGuestureLock wherever you need it with `#import "DBGuestureLock.h"`.
 

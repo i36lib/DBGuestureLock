@@ -17,7 +17,7 @@
 
 推荐使用[CocoaPods](http://cocoapods.org)来将`DBGuestureLock`添加到你的项目当中：
 
-1. 在你的Podfile当中为DBGuestureLock增加一个安装入口： `pod 'DBGuestureLock', '~> 0.0.1'`
+1. 在你的Podfile当中为DBGuestureLock增加一个安装入口： `pod 'DBGuestureLock', '~> 0.0.2'`
 2. 然后执行命令来安装Pod组件： `pod install`.
 3. 在你的项目代码当中引入DBGuestureLock来进行使用 `#import "DBGuestureLock.h"`.
 
