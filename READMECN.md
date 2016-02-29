@@ -33,6 +33,60 @@
 
 ## 三、使用方法
 
+提供了两种方式来使用DBGuestureLock，一种是实现委托（delegate），一种是使用block。
+
+### 使用Block的方式
+
+这种方式比使用委托的方式更简便，两句代码搞定。在你想添加到的视图的ViewController中导入`DBGuestureLock.h`头文件：
+```objective-c
+#import "DBGuestureLock.h"
+
+@interface ViewController ()<DBGuestureLockDelegate>
+```
+
+在`viewDidLoad`方法中创建一个`GuestureLock`对象，然后添加到视图:
+```objective-c
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    [DBGuestureLock clearGuestureLockPassword]; //just for test
+    
+	DBGuestureLock *lock = [DBGuestureLock lockOnView:self.view onPasswordSet:^(DBGuestureLock *lock, NSString *password) {
+        if (lock.firstTimeSetupPassword == nil) {
+            lock.firstTimeSetupPassword = password;
+            NSLog(@"varify your password");
+            self.label.text = @"Enter your password again:";
+        }
+    } onGetCorrectPswd:^(DBGuestureLock *lock, NSString *password) {
+        if (lock.firstTimeSetupPassword && ![lock.firstTimeSetupPassword isEqualToString:DBFirstTimeSetupPassword]) {
+            lock.firstTimeSetupPassword = DBFirstTimeSetupPassword;
+            NSLog(@"password has been setup!");
+            self.label.text = @"password has been setup!";
+        } else {
+            NSLog(@"login success");
+            self.label.text = @"login success!";
+        }
+    } onGetIncorrectPswd:^(DBGuestureLock *lock, NSString *password) {
+        if (![lock.firstTimeSetupPassword isEqualToString:DBFirstTimeSetupPassword]) {
+            NSLog(@"Error: password not equal to first setup!");
+            self.label.text = @"Not equal to first setup!";
+        } else {
+            NSLog(@"login failed");
+            self.label.text = @"login failed!";
+        }
+    }];
+    [self.view addSubview:lock];
+    [self.view setBackgroundColor:[UIColor colorWithRed:0.133 green:0.596 blue:0.933 alpha:1.00]];
+}
+```
+
+如果需要更改按钮的颜色和线条粗细，可针对DBButtonState的三种状态分别调用如下方法进行设置即可：
+```objective-c
+-(void)setupLockThemeWithLineColor:(UIColor*)lineColor lineWidth:(CGFloat)lineWidth  strokeColor:(UIColor*)strokeColor strokeWidth:(CGFloat)strokeWidth circleRadius:(CGFloat)circleRadius fillColor:(UIColor*)fillColor showCenterPoint:(BOOL)showCenterPoint centerPointColor:(UIColor*)centerPointColor centerPointRadius:(CGFloat)centerPointRadius fillCenterPoint:(BOOL)fillCenterPoint onState:(DBButtonState)buttonState;
+```
+
+### 使用委托的方式
+
 在你想添加到的视图的ViewController中导入`DBGuestureLock.h`头文件，然后让这个视图控制器实现`DBGuestureLockDelegate`委托，或者你可以在别的类当中实现该委托，在新建Lock时指定即可：
 ```objective-c
 #import "DBGuestureLock.h"
@@ -100,6 +154,8 @@
 -(UIColor *)colorOfButtonCircleCenterPointOnState:(DBButtonState)buttonState;
 -(UIColor *)lineColorOfGuestureOnState:(DBButtonState)buttonState;
 ```
+
+### 其他方法和属性
 
 `DBButtonState` 包括三种状态:
 ```objective-c

@@ -33,6 +33,60 @@ Just add the `DBGuestureButton.h`, `DBGuestureButton.m`,`DBGuestureLock.h`, `DBG
 
 ## NO.3 Usage
 
+There are two ways to use DBGuestureLock, work with delegate and work with block.
+
+### Work with block
+
+The most easy way to use, just import the `DBGuestureLock.h` and type in two statements of code:
+```objective-c
+#import "DBGuestureLock.h"
+
+@interface ViewController ()<DBGuestureLockDelegate>
+```
+
+Create a `GuestureLock` object in `viewDidLoad` and add it as the subview of current view:
+```objective-c
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    [DBGuestureLock clearGuestureLockPassword]; //just for test
+    
+	DBGuestureLock *lock = [DBGuestureLock lockOnView:self.view onPasswordSet:^(DBGuestureLock *lock, NSString *password) {
+        if (lock.firstTimeSetupPassword == nil) {
+            lock.firstTimeSetupPassword = password;
+            NSLog(@"varify your password");
+            self.label.text = @"Enter your password again:";
+        }
+    } onGetCorrectPswd:^(DBGuestureLock *lock, NSString *password) {
+        if (lock.firstTimeSetupPassword && ![lock.firstTimeSetupPassword isEqualToString:DBFirstTimeSetupPassword]) {
+            lock.firstTimeSetupPassword = DBFirstTimeSetupPassword;
+            NSLog(@"password has been setup!");
+            self.label.text = @"password has been setup!";
+        } else {
+            NSLog(@"login success");
+            self.label.text = @"login success!";
+        }
+    } onGetIncorrectPswd:^(DBGuestureLock *lock, NSString *password) {
+        if (![lock.firstTimeSetupPassword isEqualToString:DBFirstTimeSetupPassword]) {
+            NSLog(@"Error: password not equal to first setup!");
+            self.label.text = @"Not equal to first setup!";
+        } else {
+            NSLog(@"login failed");
+            self.label.text = @"login failed!";
+        }
+    }];
+    [self.view addSubview:lock];
+    [self.view setBackgroundColor:[UIColor colorWithRed:0.133 green:0.596 blue:0.933 alpha:1.00]];
+}
+```
+
+Call the following method to set lock themes for three Button state if you need:
+```objective-c
+-(void)setupLockThemeWithLineColor:(UIColor*)lineColor lineWidth:(CGFloat)lineWidth  strokeColor:(UIColor*)strokeColor strokeWidth:(CGFloat)strokeWidth circleRadius:(CGFloat)circleRadius fillColor:(UIColor*)fillColor showCenterPoint:(BOOL)showCenterPoint centerPointColor:(UIColor*)centerPointColor centerPointRadius:(CGFloat)centerPointRadius fillCenterPoint:(BOOL)fillCenterPoint onState:(DBButtonState)buttonState;
+```
+
+### Work with delegate
+
 Import the `DBGuestureLock.h` in your `ViewController` and make your ViewController conforms to `DBGuestureLockDelegate` delegate:
 ```objective-c
 #import "DBGuestureLock.h"
@@ -100,6 +154,8 @@ Some other optional delegate methods allow you to change the style of the lock:
 -(UIColor *)colorOfButtonCircleCenterPointOnState:(DBButtonState)buttonState;
 -(UIColor *)lineColorOfGuestureOnState:(DBButtonState)buttonState;
 ```
+
+### Other methods and properties
 
 `DBButtonState` include:
 ```objective-c
