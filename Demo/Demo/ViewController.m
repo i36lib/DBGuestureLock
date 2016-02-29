@@ -2,9 +2,10 @@
 //  ViewController.m
 //  Demo
 //
-//  Created by Fury on 2/28/16.
+//  Created by DeBao.Wu on 2/27/16.
+//  Email: i36.lib@gmail.com    QQ: 754753371
 //  Copyright © 2016 http://i36.Me/. All rights reserved.
-//
+//  Github地址: https://github.com/i36lib/DBGuestureLock/
 
 #import "ViewController.h"
 #import "DBGuestureLock.h"
@@ -22,6 +23,7 @@
 
     [DBGuestureLock clearGuestureLockPassword]; //just for test
     
+    //Give me a Star: https://github.com/i36lib/DBGuestureLock/
     DBGuestureLock *lock = [DBGuestureLock lockOnView:self.view delegate:self];
     [self.view addSubview:lock];
     self.label.text = @"Please set your password:"; //for test
