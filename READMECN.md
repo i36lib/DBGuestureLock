@@ -1,5 +1,5 @@
 # DBGuestureLock [English](https://github.com/i36lib/DBGuestureLock/blob/master/README.md)
-[![Build Status](https://travis-ci.org/i36lib/DBGuestureLock.svg)](https://travis-ci.org/i36lib/DBGuestureLock)  [![Cocoapods compatible](https://img.shields.io/badge/pod-v0.0.1-blue.svg?style=flat)](https://cocoapods.org/pods/DBGuestureLock)  [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/i36lib/DBGuestureLock.svg)](https://travis-ci.org/i36lib/DBGuestureLock)  [![Cocoapods compatible](https://img.shields.io/badge/pod-v0.0.2-blue.svg?style=flat)](https://cocoapods.org/pods/DBGuestureLock)  [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://opensource.org/licenses/MIT)
 
 `DBGuestureLock`是一个简单易用，方便上手，可配置的 iOS 手势密码组件。如果您愿意，非常欢迎您为这个项目增加其他有用的功能，如果您需要为这个项目做一份贡献，只需要提交一个`pull request`到这个项目即可。如果您喜欢这个组件并觉得它不错，欢迎您给它加个星。
 
