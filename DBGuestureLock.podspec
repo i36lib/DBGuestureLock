@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name         = "DBGuestureLock"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "An iOS Guesture Lock View"
   s.description  = <<-DESC
                   DBGuestureLock is an iOS drop-in class for adding a guesture lock to your app. It is easy to use and can be config for guesture lock colors.
                    DESC
-  s.homepage     = "http://i36.Me/"
+  s.homepage     = "https://cocoapods.org/pods/DBGuestureLock/"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "i36.Me" => "i36.lib@gmail.com" }
   s.platform     = :ios, "7.0"
