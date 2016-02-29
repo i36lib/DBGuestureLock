@@ -40,8 +40,6 @@
 这种方式比使用委托的方式更简便，两句代码搞定。在你想添加到的视图的ViewController中导入`DBGuestureLock.h`头文件：
 ```objective-c
 #import "DBGuestureLock.h"
-
-@interface ViewController ()
 ```
 
 在`viewDidLoad`方法中创建一个`GuestureLock`对象，然后添加到视图:

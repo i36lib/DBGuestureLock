@@ -40,8 +40,6 @@ There are two ways to use DBGuestureLock, work with delegate and work with block
 The most easy way to use, just import the `DBGuestureLock.h` and type in two statements of code:
 ```objective-c
 #import "DBGuestureLock.h"
-
-@interface ViewController ()
 ```
 
 Create a `GuestureLock` object in `viewDidLoad` and add it as the subview of current view:
