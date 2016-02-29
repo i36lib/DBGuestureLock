@@ -14,20 +14,51 @@
 @interface DBGuestureLock()
 
 @property (nonatomic, assign)CGPoint currentPoint;
-@property (nonatomic, strong)UIColor *lineColor;
-@property (nonatomic, assign)CGFloat lineWidth;
 @property (nonatomic, strong)NSMutableArray *selectedButtons;
 @property (nonatomic, assign)BOOL isPasswordSetup;
 
-//Make theme writable
 @property (nonatomic, assign)BOOL fillCenterPoint;
 @property (nonatomic, assign)BOOL showCenterPoint;
+@property (nonatomic, assign)CGFloat lineWidth;
 @property (nonatomic, assign)CGFloat circleRadius;
 @property (nonatomic, assign)CGFloat strokeWidth;
 @property (nonatomic, assign)CGFloat centerPointRadius;
+@property (nonatomic, strong)UIColor *lineColor;
 @property (nonatomic, strong)UIColor *fillColor;
 @property (nonatomic, strong)UIColor *strokeColor;
 @property (nonatomic, strong)UIColor *centerPointColor;
+
+//Work with block
+@property (nonatomic, assign)BOOL fillCenterPointOnStateNormal;
+@property (nonatomic, assign)BOOL showCenterPointOnStateNormal;
+@property (nonatomic, assign)CGFloat lineWidthOnStateNormal;
+@property (nonatomic, assign)CGFloat circleRadiusOnStateNormal;
+@property (nonatomic, assign)CGFloat strokeWidthOnStateNormal;
+@property (nonatomic, assign)CGFloat centerPointRadiusOnStateNormal;
+@property (nonatomic, strong)UIColor *lineColorOnStateNormal;
+@property (nonatomic, strong)UIColor *fillColorOnStateNormal;
+@property (nonatomic, strong)UIColor *strokeColorOnStateNormal;
+@property (nonatomic, strong)UIColor *centerPointColorOnStateNormal;
+@property (nonatomic, assign)BOOL fillCenterPointOnStateSelected;
+@property (nonatomic, assign)BOOL showCenterPointOnStateSelected;
+@property (nonatomic, assign)CGFloat lineWidthOnStateSelected;
+@property (nonatomic, assign)CGFloat circleRadiusOnStateSelected;
+@property (nonatomic, assign)CGFloat strokeWidthOnStateSelected;
+@property (nonatomic, assign)CGFloat centerPointRadiusOnStateSelected;
+@property (nonatomic, strong)UIColor *lineColorOnStateSelected;
+@property (nonatomic, strong)UIColor *fillColorOnStateSelected;
+@property (nonatomic, strong)UIColor *strokeColorOnStateSelected;
+@property (nonatomic, strong)UIColor *centerPointColorOnStateSelected;
+@property (nonatomic, assign)BOOL fillCenterPointOnStateIncorrect;
+@property (nonatomic, assign)BOOL showCenterPointOnStateIncorrect;
+@property (nonatomic, assign)CGFloat lineWidthOnStateIncorrect;
+@property (nonatomic, assign)CGFloat circleRadiusOnStateIncorrect;
+@property (nonatomic, assign)CGFloat strokeWidthOnStateIncorrect;
+@property (nonatomic, assign)CGFloat centerPointRadiusOnStateIncorrect;
+@property (nonatomic, strong)UIColor *lineColorOnStateIncorrect;
+@property (nonatomic, strong)UIColor *fillColorOnStateIncorrect;
+@property (nonatomic, strong)UIColor *strokeColorOnStateIncorrect;
+@property (nonatomic, strong)UIColor *centerPointColorOnStateIncorrect;
 
 @end
 
@@ -91,9 +122,75 @@
     CGFloat height = view.frame.size.height < view.frame.size.width ? view.frame.size.width : view.frame.size.height;
     CGRect frame = CGRectMake(0, height - width - 60, width, width);
     DBGuestureLock *lock = [[DBGuestureLock alloc] initWithFrame:frame];
+    
     lock.delegate = delegate;
+    lock.onPasswordSet = nil;
+    lock.onGetCorrectPswd = nil;
+    lock.onGetIncorrectPswd = nil;
     
     return lock;
+}
+
++(instancetype)lockOnView:(UIView*)view onPasswordSet:(void (^ __nullable)(DBGuestureLock *lock, NSString *password))onPasswordSet onGetCorrectPswd:(void (^ __nullable)(DBGuestureLock *lock, NSString *password))onGetCorrectPswd onGetIncorrectPswd:(void (^ __nullable)(DBGuestureLock *lock, NSString *password))onGetIncorrectPswd {
+    CGFloat width = view.frame.size.height > view.frame.size.width ? view.frame.size.width : view.frame.size.height;
+    CGFloat height = view.frame.size.height < view.frame.size.width ? view.frame.size.width : view.frame.size.height;
+    CGRect frame = CGRectMake(0, height - width - 60, width, width);
+    DBGuestureLock *lock = [[DBGuestureLock alloc] initWithFrame:frame];
+    
+    lock.delegate = nil;
+    lock.onPasswordSet = onPasswordSet;
+    lock.onGetCorrectPswd = onGetCorrectPswd;
+    lock.onGetIncorrectPswd = onGetIncorrectPswd;
+    
+    return lock;
+}
+
+-(void)setupLockThemeWithLineColor:(UIColor*)lineColor lineWidth:(CGFloat)lineWidth  strokeColor:(UIColor*)strokeColor strokeWidth:(CGFloat)strokeWidth circleRadius:(CGFloat)circleRadius fillColor:(UIColor*)fillColor showCenterPoint:(BOOL)showCenterPoint centerPointColor:(UIColor*)centerPointColor centerPointRadius:(CGFloat)centerPointRadius fillCenterPoint:(BOOL)fillCenterPoint onState:(DBButtonState)buttonState{
+    if (self.delegate) { //Work with block only
+        return;
+    }
+    
+    switch (buttonState) {
+        case DBButtonStateNormal:
+            self.lineColorOnStateNormal = lineColor;
+            self.lineWidthOnStateNormal = lineWidth;
+            self.strokeColorOnStateNormal = strokeColor;
+            self.strokeWidthOnStateNormal = strokeWidth;
+            self.circleRadiusOnStateNormal = circleRadius;
+            self.fillColorOnStateNormal = fillColor;
+            self.showCenterPointOnStateNormal = showCenterPoint;
+            self.centerPointColorOnStateNormal = centerPointColor;
+            self.centerPointRadiusOnStateNormal = centerPointRadius;
+            self.fillCenterPointOnStateNormal = fillCenterPoint;
+            break;
+        case DBButtonStateSelected:
+            self.lineColorOnStateSelected = lineColor;
+            self.lineWidthOnStateSelected = lineWidth;
+            self.strokeColorOnStateSelected = strokeColor;
+            self.strokeWidthOnStateSelected = strokeWidth;
+            self.circleRadiusOnStateSelected = circleRadius;
+            self.fillColorOnStateSelected = fillColor;
+            self.showCenterPointOnStateSelected = showCenterPoint;
+            self.centerPointColorOnStateSelected = centerPointColor;
+            self.centerPointRadiusOnStateSelected = centerPointRadius;
+            self.fillCenterPointOnStateSelected = fillCenterPoint;
+            break;
+        case DBButtonStateIncorrect:
+            self.lineColorOnStateIncorrect = lineColor;
+            self.lineWidthOnStateIncorrect = lineWidth;
+            self.strokeColorOnStateIncorrect = strokeColor;
+            self.strokeWidthOnStateIncorrect = strokeWidth;
+            self.circleRadiusOnStateIncorrect = circleRadius;
+            self.fillColorOnStateIncorrect = fillColor;
+            self.showCenterPointOnStateIncorrect = showCenterPoint;
+            self.centerPointColorOnStateIncorrect = centerPointColor;
+            self.centerPointRadiusOnStateIncorrect = centerPointRadius;
+            self.fillCenterPointOnStateIncorrect = fillCenterPoint;
+            break;
+        default:
+            break;
+    }
+    
 }
 
 //@Override
@@ -179,13 +276,25 @@
     NSString *correctPswd = [defaults valueForKey:DBGuestureLockPaswd];
     if (correctPswd == nil || [correctPswd length] <= 0) {
         [defaults setValue: password forKey:DBGuestureLockPaswd];
-        [self.delegate guestureLock:self didSetPassword:password];
+        if (self.delegate) {
+            [self.delegate guestureLock:self didSetPassword:password];
+        } else {
+            self.onPasswordSet(self, password);
+        }
         [self setPropertiesByState:DBButtonStateNormal];
     } else if ([password isEqualToString:correctPswd]) {
-        [self.delegate guestureLock:self didGetCorrectPswd:password];
+        if (self.delegate) {
+            [self.delegate guestureLock:self didGetCorrectPswd:password];
+        } else {
+            self.onGetCorrectPswd(self, password);
+        }
         [self setPropertiesByState:DBButtonStateNormal];
     } else { //incorrect
-        [self.delegate guestureLock:self didGetIncorrectPswd:password];
+        if (self.delegate) {
+            [self.delegate guestureLock:self didGetIncorrectPswd:password];
+        } else {
+            self.onGetIncorrectPswd(self, password);
+        }
         [self setPropertiesByState:DBButtonStateIncorrect];
     }
     
@@ -215,104 +324,174 @@
             [self resetButtons];
             
             self.fillCenterPoint = NO; //As default
-            if ([self.delegate respondsToSelector:@selector(fillButtonCircleCenterPointOnState:)]) {
-                self.fillCenterPoint = [self.delegate fillButtonCircleCenterPointOnState:DBButtonStateNormal];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(fillButtonCircleCenterPointOnState:)]) {
+                    self.fillCenterPoint = [self.delegate fillButtonCircleCenterPointOnState:DBButtonStateNormal];
+                }
+            } else if (self.fillCenterPointOnStateNormal) {
+                self.fillCenterPoint = self.fillCenterPointOnStateNormal;
             }
             
             self.showCenterPoint = NO; //As default
-            if ([self.delegate respondsToSelector:@selector(showButtonCircleCenterPointOnState:)]) {
-                self.showCenterPoint = [self.delegate showButtonCircleCenterPointOnState:DBButtonStateNormal];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(showButtonCircleCenterPointOnState:)]) {
+                    self.showCenterPoint = [self.delegate showButtonCircleCenterPointOnState:DBButtonStateNormal];
+                }
+            } else if (self.showCenterPointOnStateNormal) {
+                self.showCenterPoint = self.showCenterPointOnStateNormal;
             }
             
             self.strokeWidth = 1.f; //As default
-            if ([self.delegate respondsToSelector:@selector(widthOfButtonCircleStrokeOnState:)]) {
-                self.strokeWidth = [self.delegate widthOfButtonCircleStrokeOnState:DBButtonStateNormal];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(widthOfButtonCircleStrokeOnState:)]) {
+                    self.strokeWidth = [self.delegate widthOfButtonCircleStrokeOnState:DBButtonStateNormal];
+                }
+            } else if (self.strokeWidthOnStateNormal) {
+                self.strokeWidth = self.strokeWidthOnStateNormal;
             }
             
             self.centerPointRadius = 0.f; //As default
-            if ([self.delegate respondsToSelector:@selector(radiusOfButtonCircleCenterPointOnState:)]) {
-                self.centerPointRadius = [self.delegate radiusOfButtonCircleCenterPointOnState:DBButtonStateNormal];
+            if (self.delegate){
+                if ([self.delegate respondsToSelector:@selector(radiusOfButtonCircleCenterPointOnState:)]) {
+                    self.centerPointRadius = [self.delegate radiusOfButtonCircleCenterPointOnState:DBButtonStateNormal];
+                }
+            } else if (self.centerPointColorOnStateNormal){
+                self.centerPointColor = self.centerPointColorOnStateNormal;
             }
             
             self.lineWidth = 0.f;
-            if ([self.delegate respondsToSelector:@selector(lineWidthOfGuestureOnState:)]) {
-                self.centerPointRadius = [self.delegate lineWidthOfGuestureOnState:DBButtonStateNormal];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(lineWidthOfGuestureOnState:)]) {
+                    self.centerPointRadius = [self.delegate lineWidthOfGuestureOnState:DBButtonStateNormal];
+                }
+            } else if (self.lineWidthOnStateNormal) {
+                self.lineWidth = self.lineWidthOnStateNormal;
             }
             
             self.lineColor = [UIColor whiteColor];
-            if ([self.delegate respondsToSelector:@selector(lineColorOfGuestureOnState:)]) {
-                self.lineColor = [self.delegate lineColorOfGuestureOnState:DBButtonStateNormal];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(lineColorOfGuestureOnState:)]) {
+                    self.lineColor = [self.delegate lineColorOfGuestureOnState:DBButtonStateNormal];
+                }
+            } else if (self.lineColorOnStateNormal) {
+                self.lineColor = self.lineColorOnStateNormal;
             }
             
             //As default
             self.fillColor = [UIColor clearColor];
-            if ([self.delegate respondsToSelector:@selector(colorForFillingButtonCircleOnState:)]) {
-                self.fillColor = [self.delegate colorForFillingButtonCircleOnState:DBButtonStateNormal];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(colorForFillingButtonCircleOnState:)]) {
+                    self.fillColor = [self.delegate colorForFillingButtonCircleOnState:DBButtonStateNormal];
+                }
+            } else if (self.fillColorOnStateNormal) {
+                self.fillColor = self.fillColorOnStateNormal;
             }
             
             //As default
             self.strokeColor = [UIColor whiteColor];
-            if ([self.delegate respondsToSelector:@selector(colorOfButtonCircleStrokeOnState:)]) {
-                self.strokeColor = [self.delegate colorOfButtonCircleStrokeOnState:DBButtonStateNormal];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(colorOfButtonCircleStrokeOnState:)]) {
+                    self.strokeColor = [self.delegate colorOfButtonCircleStrokeOnState:DBButtonStateNormal];
+                }
+            } else if (self.strokeColorOnStateNormal){
+                self.strokeColor = self.strokeColorOnStateNormal;
             }
             
             //As default
             self.centerPointColor = [UIColor clearColor];
-            if ([self.delegate respondsToSelector:@selector(colorOfButtonCircleCenterPointOnState:)]) {
-                self.centerPointColor = [self.delegate colorOfButtonCircleCenterPointOnState:DBButtonStateNormal];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(colorOfButtonCircleCenterPointOnState:)]) {
+                    self.centerPointColor = [self.delegate colorOfButtonCircleCenterPointOnState:DBButtonStateNormal];
+                }
+            } else if (self.centerPointColorOnStateNormal){
+                self.centerPointColor = self.centerPointColorOnStateNormal;
             }
             
             //self.circleRadius = self.circleRadius;
             break;
         case DBButtonStateSelected:
-            //[self setUserInteractionEnabled:YES];
-            
             self.fillCenterPoint = YES; //As default
-            if ([self.delegate respondsToSelector:@selector(fillButtonCircleCenterPointOnState:)]) {
-                self.fillCenterPoint = [self.delegate fillButtonCircleCenterPointOnState:DBButtonStateSelected];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(fillButtonCircleCenterPointOnState:)]) {
+                    self.fillCenterPoint = [self.delegate fillButtonCircleCenterPointOnState:DBButtonStateSelected];
+                }
+            } else if (self.fillCenterPointOnStateSelected) {
+                self.fillCenterPoint = self.fillCenterPointOnStateSelected;
             }
             
             self.showCenterPoint = YES; //As default
-            if ([self.delegate respondsToSelector:@selector(showButtonCircleCenterPointOnState:)]) {
-                self.showCenterPoint = [self.delegate showButtonCircleCenterPointOnState:DBButtonStateSelected];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(showButtonCircleCenterPointOnState:)]) {
+                    self.showCenterPoint = [self.delegate showButtonCircleCenterPointOnState:DBButtonStateSelected];
+                }
+            } else if (self.showCenterPointOnStateSelected) {
+                self.showCenterPoint = self.showCenterPointOnStateSelected;
             }
             
             self.strokeWidth = 1.f; //As default
-            if ([self.delegate respondsToSelector:@selector(widthOfButtonCircleStrokeOnState:)]) {
-                self.strokeWidth = [self.delegate widthOfButtonCircleStrokeOnState:DBButtonStateSelected];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(widthOfButtonCircleStrokeOnState:)]) {
+                    self.strokeWidth = [self.delegate widthOfButtonCircleStrokeOnState:DBButtonStateSelected];
+                }
+            } else if (self.strokeWidthOnStateSelected) {
+                self.strokeWidth = self.strokeWidthOnStateSelected;
             }
             
             self.centerPointRadius = 10.f; //As default
-            if ([self.delegate respondsToSelector:@selector(radiusOfButtonCircleCenterPointOnState:)]) {
-                self.centerPointRadius = [self.delegate radiusOfButtonCircleCenterPointOnState:DBButtonStateSelected];
+            if (self.delegate){
+                if ([self.delegate respondsToSelector:@selector(radiusOfButtonCircleCenterPointOnState:)]) {
+                    self.centerPointRadius = [self.delegate radiusOfButtonCircleCenterPointOnState:DBButtonStateSelected];
+                }
+            } else if (self.centerPointColorOnStateSelected){
+                self.centerPointColor = self.centerPointColorOnStateSelected;
             }
             
             self.lineWidth = 2.f;
-            if ([self.delegate respondsToSelector:@selector(lineWidthOfGuestureOnState:)]) {
-                self.centerPointRadius = [self.delegate lineWidthOfGuestureOnState:DBButtonStateSelected];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(lineWidthOfGuestureOnState:)]) {
+                    self.centerPointRadius = [self.delegate lineWidthOfGuestureOnState:DBButtonStateSelected];
+                }
+            } else if (self.lineWidthOnStateSelected) {
+                self.lineWidth = self.lineWidthOnStateSelected;
             }
             
             self.lineColor = [UIColor whiteColor];
-            if ([self.delegate respondsToSelector:@selector(lineColorOfGuestureOnState:)]) {
-                self.lineColor = [self.delegate lineColorOfGuestureOnState:DBButtonStateSelected];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(lineColorOfGuestureOnState:)]) {
+                    self.lineColor = [self.delegate lineColorOfGuestureOnState:DBButtonStateSelected];
+                }
+            } else if (self.lineColorOnStateSelected) {
+                self.lineColor = self.lineColorOnStateSelected;
             }
             
             //As default
             self.fillColor = [UIColor lightTextColor];
-            if ([self.delegate respondsToSelector:@selector(colorForFillingButtonCircleOnState:)]) {
-                self.fillColor = [self.delegate colorForFillingButtonCircleOnState:DBButtonStateSelected];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(colorForFillingButtonCircleOnState:)]) {
+                    self.fillColor = [self.delegate colorForFillingButtonCircleOnState:DBButtonStateSelected];
+                }
+            } else if (self.fillColorOnStateSelected) {
+                self.fillColor = self.fillColorOnStateSelected;
             }
             
             //As default
             self.strokeColor = [UIColor whiteColor];
-            if ([self.delegate respondsToSelector:@selector(colorOfButtonCircleStrokeOnState:)]) {
-                self.strokeColor = [self.delegate colorOfButtonCircleStrokeOnState:DBButtonStateSelected];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(colorOfButtonCircleStrokeOnState:)]) {
+                    self.strokeColor = [self.delegate colorOfButtonCircleStrokeOnState:DBButtonStateSelected];
+                }
+            } else if (self.strokeColorOnStateSelected){
+                self.strokeColor = self.strokeColorOnStateSelected;
             }
             
             //As default
             self.centerPointColor = [UIColor whiteColor];
-            if ([self.delegate respondsToSelector:@selector(colorOfButtonCircleCenterPointOnState:)]) {
-                self.centerPointColor = [self.delegate colorOfButtonCircleCenterPointOnState:DBButtonStateSelected];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(colorOfButtonCircleCenterPointOnState:)]) {
+                    self.centerPointColor = [self.delegate colorOfButtonCircleCenterPointOnState:DBButtonStateSelected];
+                }
+            } else if (self.centerPointColorOnStateSelected){
+                self.centerPointColor = self.centerPointColorOnStateSelected;
             }
             
             //self.circleRadius = self.circleRadius;
@@ -321,51 +500,87 @@
             [self setUserInteractionEnabled:NO];
             
             self.fillCenterPoint = YES; //As default
-            if ([self.delegate respondsToSelector:@selector(fillButtonCircleCenterPointOnState:)]) {
-                self.fillCenterPoint = [self.delegate fillButtonCircleCenterPointOnState:DBButtonStateIncorrect];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(fillButtonCircleCenterPointOnState:)]) {
+                    self.fillCenterPoint = [self.delegate fillButtonCircleCenterPointOnState:DBButtonStateIncorrect];
+                }
+            } else if (self.fillCenterPointOnStateIncorrect) {
+                self.fillCenterPoint = self.fillCenterPointOnStateIncorrect;
             }
             
             self.showCenterPoint = YES; //As default
-            if ([self.delegate respondsToSelector:@selector(showButtonCircleCenterPointOnState:)]) {
-                self.showCenterPoint = [self.delegate showButtonCircleCenterPointOnState:DBButtonStateIncorrect];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(showButtonCircleCenterPointOnState:)]) {
+                    self.showCenterPoint = [self.delegate showButtonCircleCenterPointOnState:DBButtonStateIncorrect];
+                }
+            } else if (self.showCenterPointOnStateIncorrect) {
+                self.showCenterPoint = self.showCenterPointOnStateIncorrect;
             }
             
             self.strokeWidth = 1.f; //As default
-            if ([self.delegate respondsToSelector:@selector(widthOfButtonCircleStrokeOnState:)]) {
-                self.strokeWidth = [self.delegate widthOfButtonCircleStrokeOnState:DBButtonStateIncorrect];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(widthOfButtonCircleStrokeOnState:)]) {
+                    self.strokeWidth = [self.delegate widthOfButtonCircleStrokeOnState:DBButtonStateIncorrect];
+                }
+            } else if (self.strokeWidthOnStateIncorrect) {
+                self.strokeWidth = self.strokeWidthOnStateIncorrect;
             }
             
             self.centerPointRadius = 10.f; //As default
-            if ([self.delegate respondsToSelector:@selector(radiusOfButtonCircleCenterPointOnState:)]) {
-                self.centerPointRadius = [self.delegate radiusOfButtonCircleCenterPointOnState:DBButtonStateIncorrect];
+            if (self.delegate){
+                if ([self.delegate respondsToSelector:@selector(radiusOfButtonCircleCenterPointOnState:)]) {
+                    self.centerPointRadius = [self.delegate radiusOfButtonCircleCenterPointOnState:DBButtonStateIncorrect];
+                }
+            } else if (self.centerPointColorOnStateIncorrect){
+                self.centerPointColor = self.centerPointColorOnStateIncorrect;
             }
             
             self.lineWidth = 5.f;
-            if ([self.delegate respondsToSelector:@selector(lineWidthOfGuestureOnState:)]) {
-                self.centerPointRadius = [self.delegate lineWidthOfGuestureOnState:DBButtonStateIncorrect];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(lineWidthOfGuestureOnState:)]) {
+                    self.centerPointRadius = [self.delegate lineWidthOfGuestureOnState:DBButtonStateIncorrect];
+                }
+            } else if (self.lineWidthOnStateIncorrect) {
+                self.lineWidth = self.lineWidthOnStateIncorrect;
             }
             
             self.lineColor = [UIColor orangeColor];
-            if ([self.delegate respondsToSelector:@selector(lineColorOfGuestureOnState:)]) {
-                self.lineColor = [self.delegate lineColorOfGuestureOnState:DBButtonStateIncorrect];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(lineColorOfGuestureOnState:)]) {
+                    self.lineColor = [self.delegate lineColorOfGuestureOnState:DBButtonStateIncorrect];
+                }
+            } else if (self.lineColorOnStateIncorrect) {
+                self.lineColor = self.lineColorOnStateIncorrect;
             }
             
             //As default
             self.fillColor = [UIColor lightTextColor];
-            if ([self.delegate respondsToSelector:@selector(colorForFillingButtonCircleOnState:)]) {
-                self.fillColor = [self.delegate colorForFillingButtonCircleOnState:DBButtonStateIncorrect];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(colorForFillingButtonCircleOnState:)]) {
+                    self.fillColor = [self.delegate colorForFillingButtonCircleOnState:DBButtonStateIncorrect];
+                }
+            } else if (self.fillColorOnStateIncorrect) {
+                self.fillColor = self.fillColorOnStateIncorrect;
             }
             
             //As default
             self.strokeColor = [UIColor orangeColor];
-            if ([self.delegate respondsToSelector:@selector(colorOfButtonCircleStrokeOnState:)]) {
-                self.strokeColor = [self.delegate colorOfButtonCircleStrokeOnState:DBButtonStateIncorrect];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(colorOfButtonCircleStrokeOnState:)]) {
+                    self.strokeColor = [self.delegate colorOfButtonCircleStrokeOnState:DBButtonStateIncorrect];
+                }
+            } else if (self.strokeColorOnStateIncorrect){
+                self.strokeColor = self.strokeColorOnStateIncorrect;
             }
             
             //As default
             self.centerPointColor = [UIColor orangeColor];
-            if ([self.delegate respondsToSelector:@selector(colorOfButtonCircleCenterPointOnState:)]) {
-                self.centerPointColor = [self.delegate colorOfButtonCircleCenterPointOnState:DBButtonStateIncorrect];
+            if (self.delegate) {
+                if ([self.delegate respondsToSelector:@selector(colorOfButtonCircleCenterPointOnState:)]) {
+                    self.centerPointColor = [self.delegate colorOfButtonCircleCenterPointOnState:DBButtonStateIncorrect];
+                }
+            } else if (self.centerPointColorOnStateIncorrect){
+                self.centerPointColor = self.centerPointColorOnStateIncorrect;
             }
             
             //self.circleRadius = self.circleRadius;
