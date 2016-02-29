@@ -175,3 +175,8 @@ Other class methods/property allow you to operate with the password (password is
 ## NO.4 License
 
 This code is distributed under the terms and conditions of the [MIT license](LICENSE).
+
+## NO.4 Update Log
+
+1. 2016/02/28: First commit. CocoaPods compatable. Finish user guides. Work with delegate.
+1. 2016/02/29: Update and make it work with block. Two ways of usage can be chiose(Block/Delegate).
