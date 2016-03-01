@@ -180,8 +180,7 @@ This code is distributed under the terms and conditions of the [MIT license](LIC
 
 1. QQ: 754753371
 1. WeChat: i03020
-1. Email:  i36.lib#gmail.com
-
+1. Email: i36.lib#gmail.com
 
 ## NO.6 Version update Log
 
