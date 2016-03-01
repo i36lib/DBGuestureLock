@@ -68,9 +68,11 @@ typedef NS_ENUM(NSInteger, DBButtonState) {
 
 //Working with protocal
 +(instancetype)lockOnView:(UIView*)view delegate:(id<DBGuestureLockDelegate>)delegate;
++(instancetype)lockOnView:(UIView*)view offsetFromBottom:(CGFloat)offset delegate:(id<DBGuestureLockDelegate>)delegate;
 
 //Working with block
 +(instancetype)lockOnView:(UIView*)view onPasswordSet:(void (^)(DBGuestureLock *lock, NSString *password))onPasswordSet onGetCorrectPswd:(void (^)(DBGuestureLock *lock, NSString *password))GetCorrectPswd onGetIncorrectPswd:(void (^)(DBGuestureLock *lock, NSString *password))GetIncorrectPswd;
++(instancetype)lockOnView:(UIView*)view offsetFromBottom:(CGFloat)offset onPasswordSet:(void (^)(DBGuestureLock *lock, NSString *password))onPasswordSet onGetCorrectPswd:(void (^)(DBGuestureLock *lock, NSString *password))GetCorrectPswd onGetIncorrectPswd:(void (^)(DBGuestureLock *lock, NSString *password))GetIncorrectPswd;
 
 //Setup lock theme
 -(void)setupLockThemeWithLineColor:(UIColor*)lineColor lineWidth:(CGFloat)lineWidth  strokeColor:(UIColor*)strokeColor strokeWidth:(CGFloat)strokeWidth circleRadius:(CGFloat)circleRadius fillColor:(UIColor*)fillColor showCenterPoint:(BOOL)showCenterPoint centerPointColor:(UIColor*)centerPointColor centerPointRadius:(CGFloat)centerPointRadius fillCenterPoint:(BOOL)fillCenterPoint onState:(DBButtonState)buttonState;

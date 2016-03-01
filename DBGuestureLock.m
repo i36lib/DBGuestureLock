@@ -118,9 +118,13 @@
 }
 
 +(instancetype)lockOnView:(UIView*)view delegate:(id<DBGuestureLockDelegate>)delegate {
+    return [DBGuestureLock lockOnView:view offsetFromBottom:60.f delegate:delegate];
+}
+
++(instancetype)lockOnView:(UIView*)view offsetFromBottom:(CGFloat)offset delegate:(id<DBGuestureLockDelegate>)delegate {
     CGFloat width = view.frame.size.height > view.frame.size.width ? view.frame.size.width : view.frame.size.height;
     CGFloat height = view.frame.size.height < view.frame.size.width ? view.frame.size.width : view.frame.size.height;
-    CGRect frame = CGRectMake(0, height - width - 60, width, width);
+    CGRect frame = CGRectMake(0, height - width - offset, width, width);
     DBGuestureLock *lock = [[DBGuestureLock alloc] initWithFrame:frame];
     
     lock.delegate = delegate;
@@ -131,10 +135,14 @@
     return lock;
 }
 
-+(instancetype)lockOnView:(UIView*)view onPasswordSet:(void (^ __nullable)(DBGuestureLock *lock, NSString *password))onPasswordSet onGetCorrectPswd:(void (^ __nullable)(DBGuestureLock *lock, NSString *password))onGetCorrectPswd onGetIncorrectPswd:(void (^ __nullable)(DBGuestureLock *lock, NSString *password))onGetIncorrectPswd {
++(instancetype)lockOnView:(UIView*)view onPasswordSet:(void (^)(DBGuestureLock *lock, NSString *password))onPasswordSet onGetCorrectPswd:(void (^)(DBGuestureLock *lock, NSString *password))onGetCorrectPswd onGetIncorrectPswd:(void (^)(DBGuestureLock *lock, NSString *password))onGetIncorrectPswd {
+    return [DBGuestureLock lockOnView:view offsetFromBottom:60.f onPasswordSet:onPasswordSet onGetCorrectPswd:onGetCorrectPswd onGetIncorrectPswd:onGetIncorrectPswd];
+}
+
++(instancetype)lockOnView:(UIView*)view offsetFromBottom:(CGFloat)offset onPasswordSet:(void (^)(DBGuestureLock *lock, NSString *password))onPasswordSet onGetCorrectPswd:(void (^)(DBGuestureLock *lock, NSString *password))onGetCorrectPswd onGetIncorrectPswd:(void (^)(DBGuestureLock *lock, NSString *password))onGetIncorrectPswd {
     CGFloat width = view.frame.size.height > view.frame.size.width ? view.frame.size.width : view.frame.size.height;
     CGFloat height = view.frame.size.height < view.frame.size.width ? view.frame.size.width : view.frame.size.height;
-    CGRect frame = CGRectMake(0, height - width - 60, width, width);
+    CGRect frame = CGRectMake(0, height - width - offset, width, width);
     DBGuestureLock *lock = [[DBGuestureLock alloc] initWithFrame:frame];
     
     lock.delegate = nil;

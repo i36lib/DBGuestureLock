@@ -49,7 +49,7 @@ Create a `GuestureLock` object in `viewDidLoad` and add it as the subview of cur
 
     [DBGuestureLock clearGuestureLockPassword]; //just for test
     
-	DBGuestureLock *lock = [DBGuestureLock lockOnView:self.view onPasswordSet:^(DBGuestureLock *lock, NSString *password) {
+	DBGuestureLock *lock = [DBGuestureLock lockOnView:self.view offsetFromBottom:60.f onPasswordSet:^(DBGuestureLock *lock, NSString *password) {
         if (lock.firstTimeSetupPassword == nil) {
             lock.firstTimeSetupPassword = password;
             NSLog(@"varify your password");
@@ -99,7 +99,7 @@ Create a `GuestureLock` object and add it to your view in `viewDidLoad` method:
 
     [DBGuestureLock clearGuestureLockPassword]; //just for test
     
-    DBGuestureLock *lock = [DBGuestureLock lockOnView:self.view delegate:self];
+    DBGuestureLock *lock = [DBGuestureLock lockOnView:self.view offsetFromBottom:60.f delegate:self];
     [self.view addSubview:lock];
     [self.view setBackgroundColor:[UIColor colorWithRed:0.133 green:0.596 blue:0.933 alpha:1.00]];
 }
