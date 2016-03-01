@@ -176,10 +176,12 @@ This code is distributed under the terms and conditions of the [MIT license](LIC
 
 ## NO.5 Contact Me
 
-1.QQ: 754753371
-1.WeChat: i03020
-1.Email:  i36.lib#gmail.com
 （Add me as contact with verify message: "from github"）
+
+1. QQ: 754753371
+1. WeChat: i03020
+1. Email:  i36.lib#gmail.com
+
 
 ## NO.6 Version update Log
 

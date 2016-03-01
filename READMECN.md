@@ -176,10 +176,11 @@ DBButtonStateIncorrect  //当密码输入错误时选中按钮的样式
 
 ## 五、我的联系方式
 
-1.QQ: 754753371
-1.WeChat: i03020
-1.Email:  i36.lib#gmail.com
 （加好友请注明是来自Github）
+
+1. QQ: 754753371
+1. WeChat: i03020
+1. Email:  i36.lib#gmail.com
 
 ## 六、版本日志一览
 
