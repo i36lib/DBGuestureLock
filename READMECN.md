@@ -181,7 +181,7 @@ DBButtonStateIncorrect  //当密码输入错误时选中按钮的样式
 1.Email:  i36.lib#gmail.com
 （加好友请注明是来自Github）
 
-## 六、修改日志一览
+## 六、版本日志一览
 
-1. **2016/02/28:** 第一次提交，支持CocoaPods，完善使用文档，使用delegate的方式调用
-1. **2016/02/29:** 在delegate的基础上增加block方式使用，可在block和delegate两种方式中选择
+1. **2016/02/28:** V0.0.1	第一次提交，支持CocoaPods，完善使用文档，使用delegate的方式调用
+1. **2016/02/29:** V0.0.2	在delegate的基础上增加block方式使用，可在block和delegate两种方式中选择
