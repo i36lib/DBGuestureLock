@@ -174,15 +174,8 @@ Other class methods/property allow you to operate with the password (password is
 
 This code is distributed under the terms and conditions of the [MIT license](LICENSE).
 
-## NO.5 Contact Me
 
-（Add me as contact with verify message: "from github"）
-
-1. QQ: 754753371
-1. WeChat: i03020
-1. Email: i36.lib#gmail.com
-
-## NO.6 Version update Log
+## NO.5 Version update Log
 
 1. **2016/02/28:** V0.0.1	First commit. CocoaPods compatable. Finish user guides. Work with delegate.
 1. **2016/02/29:** V0.0.2	Update and make it work with block. Two ways of usage can be chiose(Block/Delegate).
